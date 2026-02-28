@@ -17,30 +17,37 @@ exports.getAllVendors = async (req,res)=>{
 
 
 // Assign Membership to Vendor
-exports.assignMembership = async (req,res)=>{
+exports.assignMembership = async (req, res) => {
 
-  const { vendorId, type } = req.body;
+  try {
 
-  let months = 0;
+    const { vendorId, membership } = req.body;
 
-  if(type === "6months") months = 6;
-  if(type === "1year") months = 12;
-  if(type === "2years") months = 24;
+    const vendor = await User.findById(vendorId);
 
-  const startDate = new Date();
-  const expiryDate = new Date();
-  expiryDate.setMonth(expiryDate.getMonth() + months);
+    if (!vendor) {
+      return res.status(404).json({ message: "Vendor not found" });
+    }
 
-  const membership = await Membership.create({
-    vendor: vendorId,
-    type,
-    startDate,
-    expiryDate
-  });
+    vendor.membership = membership;
 
-  res.json(membership);
+    await vendor.save();
+
+    res.json({
+      message: "Membership assigned successfully"
+    });
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.status(500).json({
+      message: "Server Error"
+    });
+
+  }
+
 };
-
 
 // Update Membership
 exports.updateMembership = async (req,res)=>{

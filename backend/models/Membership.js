@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose");
 
 const membershipSchema = new mongoose.Schema({
@@ -22,6 +21,10 @@ const membershipSchema = new mongoose.Schema({
 
   expiryDate: {
     type: Date
+  },
+  membership: {
+    type: String,
+    default: null
   }
 
 });
