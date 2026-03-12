@@ -19,7 +19,11 @@ exports.createOrder = async (req, res) => {
       status: "Received"
     });
 
+
     await order.save();
+
+    // Clear user's cart after order placed
+    await Cart.deleteMany({ userId: req.user.id });
 
     res.status(201).json({
       message: "Order Created",

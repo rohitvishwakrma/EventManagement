@@ -25,23 +25,22 @@ function UserDashboard() {
   };
 
   const handleAddToCart = async (productId) => {
-
     try {
-
       await API.post("/cart/add", {
         product: productId,
         quantity: 1
       });
-
       toast.success("Added to Cart");
 
+      // Fetch cart to check if it was empty before
+      const res = await API.get("/cart");
+      if (res.data.length === 1) {
+        // If only one item, user just added first item, navigate to cart
+        navigate("/cart");
+      }
     } catch (error) {
-
       toast.error("Error adding to cart");
-
-
     }
-
   };
 
   useEffect(() => {

@@ -52,11 +52,16 @@ function Cart() {
       </h2>
 
       {items.length === 0 ? (
-
-        <div className="bg-white p-6 rounded shadow">
-          <p className="text-gray-500">
+        <div className="bg-white p-6 rounded shadow flex flex-col items-center">
+          <p className="text-gray-500 mb-4">
             Your cart is empty
           </p>
+          <button
+            onClick={() => navigate("/dashboard")}
+            className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700"
+          >
+            Add Item
+          </button>
         </div>
 
       ) : (

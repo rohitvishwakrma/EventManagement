@@ -59,7 +59,7 @@ const handleOrder = async () => {
 
     toast.success("Order Placed Successfully");
 
-    navigate("/user/orders");
+    navigate("/dashboard");
 
   } catch(error) {
 
