@@ -1,60 +1,3 @@
-// import { useNavigate } from "react-router-dom";
-
-// function Navbar() {
-
-//   const navigate = useNavigate();
-
-//   const role = localStorage.getItem("role");
-
-//   const handleLogout = () => {
-
-//     // remove all login data
-//     localStorage.removeItem("token");
-//     localStorage.removeItem("role");
-//     localStorage.removeItem("user");
-
-//     // OR use this
-//     // localStorage.clear();
-
-//     navigate("/");
-//   };
-
-//   return (
-
-//     <div className="fixed top-0 left-0 w-full bg-blue-600 text-white flex justify-between items-center px-6 py-10 shadow-md z-50">
-
-//       <h1
-//         className="text-xl font-bold cursor-pointer"
-//         onClick={() => navigate("/")}
-//       >
-//         Event Management System
-//       </h1>
-
-//       <div className="flex items-center gap-4">
-
-//         {role && (
-//           <span className="capitalize bg-blue-500 px-3 py-1 rounded text-sm">
-//             {role}
-//           </span>
-//         )}
-
-//         <button
-//           onClick={handleLogout}
-//           className="bg-white text-blue-600 px-4 py-1 rounded hover:bg-gray-200 transition"
-//         >
-//           Logout
-//         </button>
-
-//       </div>
-
-//     </div>
-
-//   );
-
-// }
-
-// export default Navbar;
-
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
@@ -71,15 +14,15 @@ function Navbar() {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full bg-white shadow-md border-b border-gray-100 flex justify-between items-center px-6 py-3 z-50">
+    <div className="fixed top-0 left-0 w-full bg-white shadow-md border-b border-gray-100 flex justify-between items-center px-6 py-5 z-50">
       {/* Logo Section */}
       <div
         className="flex items-center gap-2 cursor-pointer"
         onClick={() => navigate("/")}
       >
-        <i className="ri-restaurant-2-line text-2xl text-orange-500"></i>
-        <h1 className="text-xl font-bold text-gray-800">
-          Foodie<span className="text-orange-500">Hub</span>
+        <i className="ri-restaurant-2-line text-2xl text-orange-500 "></i>
+        <h1 className="text-4xl font-bold text-gray-800">
+          Event<span className="text-orange-500">Managment</span>
         </h1>
       </div>
 
@@ -102,7 +45,7 @@ function Navbar() {
               {userName.charAt(0).toUpperCase()}
             </span>
           </div>
-          <span className="text-sm font-medium text-gray-700 hidden md:block">
+          <span className="text-2xl capitalize font-medium text-gray-700 hidden md:block">
             {userName}
           </span>
         </div>
@@ -113,7 +56,7 @@ function Navbar() {
           className="flex items-center gap-2 bg-gray-50 text-gray-700 px-4 py-2 rounded-lg hover:bg-red-50 hover:text-red-600 transition-all duration-300"
         >
           <i className="ri-logout-box-line"></i>
-          <span className="hidden sm:inline">Logout</span>
+          <span className="hidden sm:inline text-2xl capitalize text-gray-950">Logout</span>
         </button>
       </div>
     </div>
@@ -121,3 +64,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
